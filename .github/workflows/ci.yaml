@@ -27,9 +27,10 @@ jobs:
             ${{ runner.os }}-test-buildx-
       - name: Run test
         run: |
-          apt-get update && \
+          apt-get update
           apt-get install -y jq python3-pip
           pip3 install gdown
+          echo "test script"
           bash download_samples.sh test/test_samples.json test/popmap_test
 
   build:
