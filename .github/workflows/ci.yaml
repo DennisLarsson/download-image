@@ -29,6 +29,11 @@ jobs:
         run: |
           bash download_samples.sh test/test_samples.json test/popmap_test
 
+      - name: Check if file exists
+        run: |
+          for FILE in test/popmap_test/*.fq.gz; do
+            test -f $FILE || (echo "File $FILE not found" exit 1)
+          done
 
   build:
     needs: test
