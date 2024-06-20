@@ -15,13 +15,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4.1.6
 
-      - name: Run test
+      - name: Set up Python test environment
+        uses: actions/setup-python@v5.1.0
+        with:
+          python-version: 3.9
+
+      - name: Install jq and gdown
         run: |
-          sudo apt-get update
-          sudo apt-get install -y jq python3-pip
+          sudo apt-get update && sudo apt-get install -y jq
           pip3 install gdown
-          echo "test script"
+
+      - name: Run test script
+        run: |
           bash download_samples.sh test/test_samples.json test/popmap_test
+
 
   build:
     needs: test
