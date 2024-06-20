@@ -25,7 +25,8 @@ jobs:
 
       - name: Run test script
         run: |
-          bash download_samples.sh test/test_samples.json test/popmap_test
+          mkdir -p samples 
+          bash download_samples.sh test/test_samples.json test/popmap_test samples
 
       - name: Check if file exists
         run: |

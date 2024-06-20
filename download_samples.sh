@@ -2,8 +2,7 @@
 
 SAMPLES_JSON=$1
 POPMAP=$2
-
-mkdir -p samples
+SAMPLES_DIR=$3
 
 while IFS= read -r LINE; do
     SAMPLE_NAME=$(echo "$LINE" | cut -f1)
@@ -13,6 +12,6 @@ while IFS= read -r LINE; do
         exit 1
     else
         echo "Downloading ${SAMPLE_NAME}.fq.gz using ID $ID..."
-        gdown $ID --output "samples/${SAMPLE_NAME}.fq.gz"
+        gdown $ID --output "${SAMPLES_DIR}/${SAMPLE_NAME}.fq.gz"
     fi
 done < $POPMAP
