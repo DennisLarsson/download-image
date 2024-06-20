@@ -31,9 +31,10 @@ jobs:
 
       - name: Check if file exists
         run: |
-          for FILE in test/popmap_test/*.fq.gz; do
-            test -f $FILE || (echo "$FILE not found" && exit 1)
-          done
+          while IFS= read -r LINE; do
+            FILE=$(echo "$LINE" | cut -f 1)
+            test -f ${FILE}.fq.gz || (echo "${FILE}.fq.gz not found" && exit 1)
+          done < test/popmap_test
 
   build:
     needs: test
