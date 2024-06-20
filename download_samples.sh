@@ -1,7 +1,7 @@
 #!/bin/bash
 
-SAMPLES_JSON=$0
-POPMAP=$1
+SAMPLES_JSON=$1
+POPMAP=$2
 
 while IFS= read -r LINE; do
     SAMPLE_NAME=$(echo "$LINE" | cut -f1)
