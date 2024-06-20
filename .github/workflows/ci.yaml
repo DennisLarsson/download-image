@@ -33,6 +33,7 @@ jobs:
           bash download_samples.sh test/test_samples.json test/popmap_test
 
   build:
+    needs: test
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v4.1.6
