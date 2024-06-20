@@ -10,6 +10,6 @@ while IFS= read -r LINE; do
         echo "Error: Sample ${SAMPLE_NAME}.fq.gz not found in samples.json" >&2
         exit 1
     else
-        gdown $ID --output "${SAMPLE_NAME}.fq.gz"
+        gdown --id $ID --output "${SAMPLE_NAME}.fq.gz"
     fi
 done < $POPMAP
