@@ -11,6 +11,6 @@ while IFS= read -r LINE; do
         exit 1
     else
         echo "Downloading ${SAMPLE_NAME}.fq.gz using ID $ID..."
-        gdown --id $ID --output "${SAMPLE_NAME}.fq.gz"
+        gdown $ID --output "${SAMPLE_NAME}.fq.gz"
     fi
 done < $POPMAP
